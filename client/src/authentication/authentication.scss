@@ -1,0 +1,366 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.register {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $black;
+  width: 100vw;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: calc(1.2rem + 2vmin);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    gap: 1rem;
+
+    .formForName {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+
+      .firstName {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        label {
+          font-size: calc(0.5rem + 1.5vmin);
+          font-weight: 500;
+          padding: 0.5rem 0;
+          cursor: pointer;
+
+          sup {
+            color: red;
+          }
+        }
+
+        input[type="text"] {
+          background: none;
+          border: none;
+          outline: none;
+          box-shadow: $dark_shadow;
+          background-color: $white;
+          border-radius: $light_border_radius;
+          padding: 0.8rem 1rem;
+          font-size: calc(0.5rem + 1.2vmin);
+        }
+      }
+
+      .lastName {
+        @extend .firstName;
+      }
+    }
+
+    .formEmail {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      label {
+        font-size: calc(0.5rem + 1.5vmin);
+        font-weight: 500;
+        padding: 0.5rem 0;
+        cursor: pointer;
+
+        sup {
+          color: red;
+        }
+      }
+
+      input[type="email"] {
+        background: none;
+        border: none;
+        outline: none;
+        box-shadow: $dark_shadow;
+        background-color: $white;
+        border-radius: $light_border_radius;
+        padding: 0.8rem 1rem;
+        font-size: calc(0.5rem + 1.2vmin);
+      }
+    }
+
+    .formContact {
+      @include numberInput;
+      @extend .formEmail;
+
+      input[type="number"] {
+        background-color: $white;
+      }
+
+      .no-spin::-webkit-inner-spin-button,
+      .no-spin::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+      }
+    }
+
+    .formPassword {
+      @extend .formEmail;
+
+      input[type="password"] {
+        background: none;
+        border: none;
+        outline: none;
+        box-shadow: $dark_shadow;
+        background-color: $white;
+        border-radius: $light_border_radius;
+        padding: 0.8rem 1rem;
+        font-size: calc(0.5rem + 1.2vmin);
+      }
+    }
+
+    .formCPassword {
+      @extend .formPassword;
+    }
+
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      font-size: calc(0.5rem + 1.2vmin);
+      width: 100%;
+      background-color: #3749bb;
+      padding: 0.8rem 0;
+      margin: 1rem 0;
+      border-radius: $light_border_radius;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+
+  h4 {
+    display: flex;
+    gap: 0.4rem;
+    font-weight: 500;
+  }
+}
+
+//styles for login page
+.login {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $black;
+
+  h2 {
+    font-size: calc(1.2rem + 2vmin);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    width: 40%;
+
+    .email {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      label {
+        font-size: calc(0.5rem + 1.5vmin);
+        font-weight: 500;
+        padding: 0.5rem 0;
+        cursor: pointer;
+      }
+
+      input[type="email"] {
+        width: 100%;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0.8rem 1rem;
+        color: $black;
+        background-color: $white;
+        border-radius: $light_border_radius;
+        font-size: calc(2px + 2vmin);
+        box-shadow: $dark_shadow;
+      }
+    }
+
+    .password {
+      @extend .email;
+
+      .forgotPass {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        a {
+          color: $clr_red_light;
+        }
+      }
+
+      input[type="password"] {
+        width: 100%;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0.8rem 1rem;
+        color: $black;
+        background-color: $white;
+        border-radius: $light_border_radius;
+        font-size: calc(2px + 2vmin);
+        box-shadow: $dark_shadow;
+      }
+    }
+
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      font-size: calc(0.5rem + 1.2vmin);
+      width: 100%;
+      background-color: #3749bb;
+      padding: 0.8rem 0;
+      margin: 1rem 0;
+      border-radius: $light_border_radius;
+      color: $white;
+      cursor: pointer;
+    }
+
+    span {
+      width: 100%;
+      display: grid;
+      place-items: center;
+      font-size: calc(0.6rem + 1vmin);
+      font-weight: 600;
+    }
+
+    .toRegister {
+      background: none;
+      outline: none;
+      display: grid;
+      place-items: center;
+      font-size: calc(0.5rem + 1.2vmin);
+      width: 100%;
+      border: 2px solid #3749bb;
+      color: $black !important;
+      padding: 0.55rem 0;
+      border-radius: $light_border_radius;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}
+
+//forgot password page design
+.forgotPassword {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $black;
+  width: 100vw;
+
+  h2 {
+    font-size: calc(1.2rem + 2vmin);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .backBtn {
+      display: flex;
+      align-items: center;
+      color: $white;
+      background-color: $black;
+      padding: 0.2rem 0.5rem;
+      float: left;
+      width: max-content;
+
+      &:hover {
+        background-color: rgba($color: $black, $alpha: 0.95);
+      }
+    }
+
+    .inputField {
+      @include textInput;
+
+      display: flex;
+      flex-direction: column;
+
+      button {
+        @include buttonBasic;
+
+        font-size: calc(0.5rem + 1.2vmin);
+        background-color: #3749bb;
+        padding: 0.5rem 0;
+        margin-top: 2rem;
+        border-radius: $light_border_radius;
+        color: $white;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #3749bb;
+        }
+      }
+
+      p {
+        font-size: calc(3px + 1.1vmin);
+        text-align: center;
+        padding: 0.5rem 0;
+
+        span {
+          font-size: calc(2px + 1.5vmin);
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .register {
+    .content {
+      width: 90%;
+      gap: .8rem;
+
+      .formForName {
+        flex-direction: column;
+
+        .firstName {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .login {
+    overflow: hidden;
+
+    .content {
+      width: 90%;
+    }
+  }
+
+  .forgotPassword {
+    .content {
+      width: 90%;
+
+      .backBtn {
+        margin-top: 1rem;
+      }
+    }
+  }
+}

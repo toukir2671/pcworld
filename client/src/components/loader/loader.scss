@@ -1,0 +1,16 @@
+@use "../../_variables" as *;
+@use "../../mixins" as *;
+
+.loader-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+
+  .loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999999;
+  }
+}

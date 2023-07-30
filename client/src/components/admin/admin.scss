@@ -1,0 +1,310 @@
+@use "../../_variables" as *;
+@use "../../mixins" as *;
+
+.adminPanel {
+  color: $black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  // position: sticky;
+
+  a {
+    color: $black;
+    font-size: calc(0.5rem + 1.4vmin);
+    font-weight: 600;
+    background-color: $clr_grey_7;
+    padding: 0.3rem 0.6rem;
+    border-radius: $light_border_radius;
+    transition: $transition;
+
+    &:hover {
+      background-color: $clr_grey_8;
+    }
+  }
+}
+
+.admin-greeting {
+  color: $black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+
+  .icon {
+    background-color: $orange;
+    border-radius: 50%;
+    padding: 1.6rem 1.8rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .content {
+    text-align: center;
+
+    h1 {
+      font-size: calc(10px + 3vmin);
+      font-weight: 900;
+      font-family: font(redressed);
+    }
+
+    p {
+      font-size: calc(5px + 3vmin);
+      font-family: font(redressed);
+    }
+  }
+}
+
+.productUpload {
+  color: $black;
+  display: grid;
+  place-items: center;
+  width: 100%;
+
+  h1 {
+    font-weight: 500;
+    margin-top: 2.8rem;
+    font-size: calc(1.5rem + 2vmin);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: $orange;
+      left: 0;
+      bottom: 5%;
+      height: 2px;
+      width: 100%;
+    }
+  }
+
+  .product-upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 50%;
+
+    .form-item {
+      width: 100%;
+
+      p {
+        font-size: calc(0.5rem + 1.5vmin);
+        font-weight: 500;
+        padding: 0.3rem 0;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          background-color: $orange;
+          height: 50%;
+          width: 2px;
+          top: 50%;
+          bottom: 50%;
+          left: -0.5%;
+          transform: translateY(-50%);
+        }
+      }
+
+      @include textInput;
+      @include numberInput;
+      @include fileInput;
+
+      input[type="text"] {
+        width: 100%;
+      }
+
+      input[type="number"] {
+        width: 100%;
+      }
+
+      input[type="file"] {
+        width: 100%;
+      }
+    }
+
+    .specifications {
+      width: 100%;
+
+      h3 {
+        font-weight: 400;
+        margin-top: 2rem;
+        font-size: calc(1rem + 2vmin);
+      }
+
+      .fieldsWithButton {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.6rem 0;
+
+        .inputFields {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.5rem;
+          @include textInput;
+          width: 100%;
+
+          input[type="text"] {
+            width: 50%;
+          }
+        }
+
+        .button {
+          width: 10%;
+          @include buttonBasic;
+
+          &:hover {
+            background-color: #fad7d7;
+          }
+        }
+      }
+
+      .addMore {
+        float: right;
+        background-color: #3eb2fd;
+        background-image: linear-gradient(1deg, #4f58fd, #149bf3 99%);
+        background-size: calc(100% + 20px) calc(100% + 20px);
+        border-radius: $light_border_radius;
+        border-width: 0;
+        box-shadow: none;
+        color: $white;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 6px 20px;
+        margin: 0.8rem 0;
+        transition: $transition;
+
+        &:active,
+        .addMore:focus {
+          outline: none;
+        }
+
+        &:hover {
+          background-position: -20px -20px;
+        }
+
+        &:focus:not(:active) {
+          box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 0.125em;
+        }
+      }
+    }
+
+    .submit {
+      width: 100%;
+      padding: 0.5rem 0;
+      font-size: calc(0.5rem + 2vmin);
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.deals {
+  width: 100%;
+  display: grid;
+  place-items: center;
+
+  h1 {
+    color: $black;
+    max-width: fit-content;
+    font-weight: 500;
+    margin-top: 2.8rem;
+    font-size: calc(1.5rem + 2vmin);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: $orange;
+      left: 0;
+      bottom: 5%;
+      height: 2px;
+      width: 100%;
+    }
+  }
+
+  .deal-content {
+    width: 50%;
+    margin-top: 1rem;
+
+    .dates {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      gap: 1rem;
+
+      .from,
+      .to {
+        width: 100%;
+
+        h2 {
+          font-size: calc(3px + 2vmin);
+          font-weight: 600;
+          color: $black;
+        }
+
+        input[type="text"] {
+          width: 100%;
+          border: none;
+          outline: none;
+          padding: 0.5rem 1rem;
+          border: 1px solid $grey;
+          cursor: pointer;
+
+          &::placeholder {
+            font-size: calc(2px + 1.5vmin);
+            padding: 0.5rem 0;
+            font-family: font(poppins);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .description {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0 auto;
+      gap: 2rem;
+
+      input {
+        width: 100%;
+        color: $black;
+      }
+
+      @include textInput;
+      @include fileInput;
+
+      .textarea {
+        width: 100%;
+        background: none;
+        border: none;
+        outline: none;
+        box-shadow: $dark_shadow;
+        border-radius: $light_border_radius;
+        padding: 0.8rem 1rem;
+        font-size: calc(0.5rem + 1.2vmin);
+      }
+    }
+
+    .dealSubmitBtn {
+      margin-top: 1.5rem;
+
+      button {
+        width: 100%;
+        @include buttonBasic;
+        padding: 0.5rem 0;
+        font-size: calc(2px + 2vmin);
+      }
+    }
+  }
+}

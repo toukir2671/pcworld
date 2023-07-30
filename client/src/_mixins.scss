@@ -1,0 +1,122 @@
+@use "./variables" as *;
+
+@mixin textInput {
+  input[type="text"] {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: $dark_shadow;
+    border-radius: $light_border_radius;
+    padding: 0.8rem 1rem;
+    font-size: calc(0.5rem + 1.2vmin);
+  }
+}
+
+@mixin numberInput {
+  input[type="number"] {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: $dark_shadow;
+    border-radius: $light_border_radius;
+    padding: 0.8rem 1rem;
+    font-size: calc(0.5rem + 1.2vmin);
+  }
+}
+
+@mixin fileInput {
+  input[type="file"] {
+    @include textInput;
+    height: max-content;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    border-radius: 5px;
+    background-color: $white;
+    cursor: pointer;
+    background-color: $clr_green_light;
+  }
+}
+
+@mixin buttonBasic {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: $light_border_radius;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  text-align: center;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f7fafa;
+  }
+
+  &:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+    outline: 0;
+  }
+}
+
+@mixin advanceBtn {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  transition: color 0.4s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $clr_primary_1;
+    transition: top 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    top: 0;
+  }
+
+  &:hover {
+    color: $white;
+  }
+}
+
+@mixin timeLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba($color: $orange, $alpha: 0.6);
+  padding: 0.5rem 1rem;
+  color: $white;
+  border-bottom-left-radius: $heavy_border_radius;
+
+  .time-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      font-size: calc(2px + 1.8vmin);
+      font-weight: 500;
+    }
+
+    p {
+      font-size: calc(2px + 2vmin);
+      font-weight: 700;
+      font-family: font(redressed);
+    }
+  }
+}

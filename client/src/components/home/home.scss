@@ -1,0 +1,304 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.home {
+  width: 100vw;
+  color: $black;
+
+  .home-container {
+    width: 85%;
+    margin: 2rem auto;
+
+    .dailyDeals {
+      width: 100%;
+      margin-bottom: 2.5rem;
+
+      .deals-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .image {
+          width: 100%;
+          position: relative;
+
+          img {
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+
+        .timeLeft {
+          @include timeLeft;
+        }
+      }
+    }
+
+    .heading-1 {
+      width: 100%;
+      color: $white;
+      background-color: $clr_primary_1;
+      border-radius: $light_border_radius;
+      padding: 0.5rem 0;
+      text-align: center;
+      font-size: calc(2px + 1.5vmin);
+      font-weight: 500;
+    }
+
+    .shopByCategory {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+
+      li {
+        margin-top: 2rem;
+        width: 100%;
+
+        a {
+          color: $black;
+
+          .iconAndLink {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 0.8rem;
+            background-color: $white;
+            padding: 1.5rem;
+            border-radius: $heavy_border_radius;
+            border: 1px solid $grey;
+            height: 100%;
+
+            img {
+              height: 4rem;
+              width: 4rem;
+              transition: $transition;
+            }
+
+            span {
+              font-size: calc(2px + 1.2vmin);
+              font-weight: 500;
+            }
+
+            &:hover img {
+              scale: 1.05;
+            }
+          }
+        }
+      }
+    }
+
+    .custom-build {
+      min-height: calc(30vh + 5vmin);
+
+      .heading-2 {
+        @extend .heading-1;
+        margin: 2rem 0;
+      }
+
+      .slick-slide {
+        .grid-div {
+          width: 100%;
+          padding: 0 4px;
+          color: $black;
+
+          .border {
+            border-radius: $light_border_radius;
+            border: 1px solid $grey;
+            overflow: hidden;
+
+            &:hover img {
+              scale: 1.03;
+            }
+
+            .image {
+              width: 100%;
+              overflow: hidden;
+
+              img {
+                height: 100%;
+                width: 100%;
+                aspect-ratio: 16/10;
+                object-fit: cover;
+                transition: $transition;
+              }
+            }
+
+            .content {
+              width: 100%;
+              height: calc(5rem + 2vmin);
+              padding: 0 0.5rem;
+              padding-top: 1rem;
+              background-color: $clr_grey_8;
+
+              .productName {
+                font-size: calc(2px + 1.3vmin);
+                font-weight: 600;
+              }
+
+              .price {
+                display: flex;
+                gap: 1rem;
+                font-size: calc(2px + 1vmin);
+                font-weight: 500;
+
+                .normalPrice {
+                  text-decoration: line-through;
+                  text-decoration-color: red;
+                }
+
+                .specialPrice {
+                  text-decoration: underline;
+                  text-decoration-color: $clr_green_dark;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      a {
+        display: grid;
+        place-items: center;
+        width: max-content;
+        margin: 0 auto;
+
+        .viewMore {
+          @include advanceBtn;
+
+          margin-top: calc(3rem + 2vmin);
+          padding: 0.6rem 4rem;
+          font-size: calc(3px + 2vmin);
+          border: 2px solid $clr_grey_1;
+          border-radius: $light_border_radius;
+        }
+      }
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      color: black !important;
+    }
+
+    .heading-3 {
+      @extend .heading-1;
+      margin: 2rem 0;
+    }
+
+    .heading-4 {
+      @extend .heading-1;
+      margin: 2rem 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    .home-container {
+      width: 90%;
+      margin-top: 1rem;
+
+      .dailyDeals {
+        margin-bottom: 1rem;
+      }
+
+      .shopByCategory {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.2rem;
+
+        li {
+          margin-top: 1rem;
+
+          a {
+            .iconAndLink {
+              padding: 0.5rem;
+              gap: 0.3rem;
+
+              img {
+                height: 3rem;
+                width: 3rem;
+              }
+
+              span {
+                font-size: calc(3px + 1.2vmin);
+              }
+            }
+          }
+        }
+      }
+
+      .custom-build {
+        .heading-2 {
+          margin: 1rem 0;
+        }
+
+        .slick-slide {
+          .grid-div {
+            .border {
+              .content {
+                height: calc(4rem + 2vmin);
+
+                .productName {
+                  font-size: calc(3px + 1.5vmin);
+                }
+
+                .price {
+                  font-size: calc(3px + 1vmin);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .heading-3 {
+        margin: 1rem 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .home {
+    .home-container {
+      .shopByCategory {
+        li {
+          a {
+            .iconAndLink {
+              img {
+                height: 2.5rem;
+                width: 2.5rem;
+              }
+
+              span {
+                font-size: calc(3px + 1.5vmin);
+              }
+            }
+          }
+        }
+      }
+
+      .custom-build {
+        .slick-slide {
+          .grid-div {
+            .border {
+              .content {
+                height: calc(3rem + 2vmin);
+
+                .productName {
+                  font-size: calc(5px + 1.5vmin);
+                }
+
+                .price {
+                  font-size: calc(3px + 1.5vmin);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
